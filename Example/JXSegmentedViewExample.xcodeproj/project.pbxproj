@@ -57,6 +57,7 @@
 		19F1D2F92339B0D100EEFB77 /* JXSegmentedView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1908F030226F14E000E03FD5 /* JXSegmentedView.framework */; };
 		19F1D2FA2339B0D100EEFB77 /* JXSegmentedView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1908F030226F14E000E03FD5 /* JXSegmentedView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8168092249CCB9900837DEC /* PagingListBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8168091249CCB9900837DEC /* PagingListBaseCell.swift */; };
+		BAFD2E382B298450001E9E34 /* JXSegmentedTitleImageMixCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFD2E372B298450001E9E34 /* JXSegmentedTitleImageMixCellDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -127,6 +128,7 @@
 		A80CD84E24A1A73C00FF22C8 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A80CD84F24A1A73C00FF22C8 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		A8168091249CCB9900837DEC /* PagingListBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingListBaseCell.swift; sourceTree = "<group>"; };
+		BAFD2E372B298450001E9E34 /* JXSegmentedTitleImageMixCellDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXSegmentedTitleImageMixCellDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				1908EE7F226F05BA00E03FD5 /* JXSegmentedMixcellDataSource.swift */,
+				BAFD2E372B298450001E9E34 /* JXSegmentedTitleImageMixCellDataSource.swift */,
 			);
 			path = MixCell;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				A8168092249CCB9900837DEC /* PagingListBaseCell.swift in Sources */,
 				1908EEBD226F05BA00E03FD5 /* LoadDataViewController.swift in Sources */,
 				197927B226203F2800BDA8AE /* JXPagingListRefreshView.swift in Sources */,
+				BAFD2E382B298450001E9E34 /* JXSegmentedTitleImageMixCellDataSource.swift in Sources */,
 				1908EECA226F05BA00E03FD5 /* TestListBaseView.swift in Sources */,
 				1908EEC7226F05BA00E03FD5 /* CellCustomizeViewController.swift in Sources */,
 				197927B026203F2800BDA8AE /* JXPagingSmoothView.swift in Sources */,

@@ -10,13 +10,13 @@ import UIKit
 import JXSegmentedView
 
 class CellCustomizeViewController: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.rowHeight = 44
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         var itemTitle: String?
@@ -26,13 +26,13 @@ class CellCustomizeViewController: UITableViewController {
                 break
             }
         }
-
+        
         let titles = ["猴哥", "青蛙王子", "旺财", "粉红猪", "喜羊羊", "黄焖鸡", "小马哥", "牛魔王", "大象先生", "神龙"]
         let numbers = [1, 22, 333, 44444, 0, 66, 777, 0, 99999, 10]
         let dotStates = [false, true, true, true, false, false, true, true, false, true]
         let vc = ContentBaseViewController()
         vc.title = itemTitle
-
+        
         switch itemTitle! {
         case "颜色渐变":
             //配置数据源
@@ -80,7 +80,7 @@ class CellCustomizeViewController: UITableViewController {
             let indicator = JXSegmentedIndicatorLineView()
             indicator.indicatorWidth = JXSegmentedViewAutomaticDimension
             vc.segmentedView.indicators = [indicator]
-
+            
             vc.segmentedDataSource = dataSource
         case "大小缩放+Cell宽度缩放":
             //高仿汽车之家
@@ -94,11 +94,11 @@ class CellCustomizeViewController: UITableViewController {
             dataSource.isSelectedAnimable = true
             dataSource.isItemWidthZoomEnabled = true
             dataSource.titles = titles
-
+            
             let indicator = JXSegmentedIndicatorLineView()
             indicator.indicatorWidth = JXSegmentedViewAutomaticDimension
             vc.segmentedView.indicators = [indicator]
-
+            
             vc.segmentedDataSource = dataSource
         case "数字":
             //配置数据源
@@ -106,8 +106,8 @@ class CellCustomizeViewController: UITableViewController {
             dataSource.isTitleColorGradientEnabled = true
             dataSource.titles = titles
             dataSource.numbers = numbers
-//            dataSource.numberHeight = 20
-//            dataSource.numberFont = .systemFont(ofSize: 15)
+            //            dataSource.numberHeight = 20
+            //            dataSource.numberFont = .systemFont(ofSize: 15)
             dataSource.numberStringFormatterClosure = {(number) -> String in
                 if number > 999 {
                     return "999+"
@@ -189,7 +189,7 @@ class CellCustomizeViewController: UITableViewController {
             let wednesdayAttriText = NSMutableAttributedString(string: "周三\n1月9号")
             formatNormal(attriText: wednesdayAttriText)
             dataSource.attributedTitles = [mondayAttriText.copy(), tuesdayAttriText.copy(), wednesdayAttriText.copy()] as! [NSAttributedString]
-
+            
             formatSelected(attriText: mondayAttriText)
             formatSelected(attriText: tuesdayAttriText)
             formatSelected(attriText: wednesdayAttriText)
@@ -203,11 +203,41 @@ class CellCustomizeViewController: UITableViewController {
         case "多种cell":
             let dataSource = JXSegmentedMixcellDataSource()
             vc.segmentedDataSource = dataSource
+        case "只有图片或文字":
+            //配置数据源
+            let dataSource = JXSegmentedTitleMixImageDataSource()
+            dataSource.isTitleColorGradientEnabled = true
+            dataSource.isTitleZoomEnabled = true
+            dataSource.titleSelectedZoomScale = 1.3
+            
+            dataSource.titleMixImageTypes = [.title("推荐"),
+                                             .title("广场"),
+                                             .title("精彩"),
+//                                             .title("自定义"),
+                                             .image("tavendor", "tavendor", .init(width: 143, height: 25))]
+            
+            dataSource.isImageZoomEnabled = true
+            dataSource.loadImageClosure = {(imageView, normalImageInfo) in
+                //如果normalImageInfo传递的是图片的地址，你需要借助SDWebImage等第三方库进行图片加载。
+                //加载bundle内的图片，就用下面的方式，内部默认也采用该方法。
+                imageView.image = UIImage(named: normalImageInfo)
+            }
+            dataSource.isItemSpacingAverageEnabled = true
+            dataSource.itemSpacing = 0
+            dataSource.itemWidthIncrement = 0
+
+            vc.segmentedDataSource = dataSource
+            vc.segmentedView.contentEdgeInsetLeft = 20
+            vc.segmentedView.contentEdgeInsetRight = 20
+            
+            let indicator = JXSegmentedIndicatorLineView()
+            indicator.indicatorWidth = JXSegmentedViewAutomaticDimension
+            vc.segmentedView.indicators = [indicator]
         default:
             break
         }
         navigationController?.pushViewController(vc, animated: true)
     }
-
-
+    
+    
 }
